@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+
+
+.first-section{
+    font-size: 1.1rem;
+}
+
+
+/* Base diamond style */
+.baseParent{
+    position: relative;
+    min-height:380px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.base{
+    height: 150px;
+    width: 150px;
+    transition: 0.4s;
+}
+.base:hover{
+    cursor: pointer;
+    
+}
+
+.b2{
+    
+    position:absolute;
+    top:6%;
+    left: 30%; 
+    
+}
+
+
+.b2:hover{
+    transform: translateY(-10%);
+}
+
+.b16{
+    position: absolute;
+    top:30%;
+    right:6%;
+}
+.b16:hover{
+    transform: translateX(10%);
+}
+.b8{
+    position:absolute;
+    top:30%;
+    left:6%;
+}
+.b8:hover{
+    transform: translateX(-10%);
+}
+.bN{
+    position:absolute;
+    bottom:6%;
+    left:30%;
+}
+.bN:hover{
+    transform: translateY(10%);
+}
+
+/* End of base diamond style */
+
+/* Question mark style */
+
+.questionParent{
+    position:absolute;
+    left:0;
+    width: 400px;
+    height: 500px;
+
+}
+.question{
+
+}
+.q1{
+    position: absolute;
+    top: 3%;
+    left: 30%;
+}
+.q2{
+    position: absolute;
+    left: 3%;
+    top: 30%;
+}
+.q3{
+    position: absolute;
+    right: 3%;
+    top: 40%;
+}
+
+/* End of question mark style */
+
+/* Headers */
+
+.headerPlace{
+    position: relative;
+}
+.base2{
+    position: absolute;
+    left:0;
+    height: 300px;
+    width: 300px;
+    transition: 0.4s;
+    opacity:0;
+    display:none;
+    transform: translateY(-100%);
+}
+.enter{
+    opacity:100;
+    
+    transform: translateY(0);
+}
+.base2:hover{
+    transform: translateY(-10%);
+    cursor: pointer;
+}
