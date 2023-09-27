@@ -9,6 +9,15 @@ html{
 .first-section{
     font-size: 1.1rem;
 }
+.second-section{
+    font-size: 1.1rem;
+}
+.third-section{
+    font-size: 1.1rem;
+}
+.fourth-section{
+    font-size: 1.1rem;
+}
 
 
 /* Base diamond style */
@@ -24,10 +33,7 @@ html{
     width: 150px;
     transition: 0.4s;
 }
-.base:hover{
-    cursor: pointer;
-    
-}
+
 
 .b2{
     
@@ -101,25 +107,41 @@ html{
 
 /* Headers */
 
-.headerPlace{
+.parent2{
     position: relative;
+    min-height:380px;
+    min-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .base2{
-    position: absolute;
-    left:0;
-    height: 300px;
-    width: 300px;
-    transition: 0.4s;
-    opacity:0;
-    display:none;
-    transform: translateY(-100%);
-}
-.enter{
-    opacity:100;
     
-    transform: translateY(0);
+    top:-5%;
+    right:0;
+    width: 50vh;
+    transition: 0.4s;
+    
+    /* clip-path:inset(0 0 35px 0); */
 }
+
 .base2:hover{
     transform: translateY(-10%);
-    cursor: pointer;
+}
+.base8{
+    top:-5%;
+    left:0;
+    width: 50vh;
+    transition: 0.4s;
+}
+.base8:hover{
+    transform: translateX(-10%);
+}
+.base16{
+    top:-5%;
+    right:0;
+    width: 50vh;
+    transition: 0.4s;
+}
+.base16:hover{
+    transform: translateX(10%);
 }

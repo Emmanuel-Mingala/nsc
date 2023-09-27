@@ -1,3 +1,4 @@
+
 $(function () {
 
     // init feather icons
@@ -27,7 +28,7 @@ $(function () {
         }
         
         // adjust scroll to top
-        if (scroll >= 600) {
+        if (scroll >= 300) {
             $('.scroll-top').addClass('active');
         } else {
             $('.scroll-top').removeClass('active');

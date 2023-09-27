@@ -7324,9 +7324,9 @@ footer hr {
   line-height: 40px;
   right: -100px;
   color: #ffffff;
-  background-color: rgba(0, 230, 118, 0.5); }
+  background-color: var(--teal); }
   .scroll-top:hover {
-    background-color: #00e676;
+    background-color: var(--green);
     transition: all .4s ease-in-out; }
   .scroll-top.active {
     right: 20px; }

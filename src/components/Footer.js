@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {HashLink} from 'react-router-hash-link'
 import "./Footer.css"
 const Footer = () => {
     const [bounce, setBounce] = useState('');
@@ -22,16 +23,16 @@ const Footer = () => {
               <h2>Technologies used</h2>
               <ul class="list-inline social social-dark social-sm">
                 <li class="list-inline-item">
-                  <a href="#footer"><i class="fa-brands fa-react fa-xl" onClick={handleClick}></i></a>
+                  <HashLink smooth to="#footer"><i class="fa-brands fa-react fa-xl"  onClick={handleClick}></i></HashLink>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#footer"><i class="fa-brands fa-js fa-lg" onClick={handleClick}></i></a>
+                  <HashLink smooth to="#footer" ><i class="fa-brands fa-js fa-lg" onClick={handleClick} ></i></HashLink>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#footer"><i class="fa-brands fa-bootstrap fa-lg" onClick={handleClick}></i></a>
+                  <HashLink smooth to="#footer" ><i class="fa-brands fa-bootstrap fa-lg" onClick={handleClick}></i></HashLink>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#footer"><i class="fa-brands fa-html5 fa-lg" onClick={handleClick}></i></a>
+                  <HashLink smooth to="#footer" ><i class="fa-brands fa-html5 fa-lg" onClick={handleClick} ></i></HashLink>
                 </li>
               </ul>
               {/* <ul class="list-inline">
@@ -46,7 +47,7 @@ const Footer = () => {
               </p>
               <ul class="list-inline social social-dark social-sm">
                 <li class="list-inline-item">
-                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                  <a href="https://web.facebook.com/learntocodeph22"><i class="fa-brands fa-facebook"></i></a>
                 </li>
                 <li class="list-inline-item">
                   <a href=""><i class="fa-brands fa-twitter"></i></a>
