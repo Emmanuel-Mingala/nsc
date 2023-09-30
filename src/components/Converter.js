@@ -1,14 +1,21 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+
+//React Jquery
 import $ from 'jquery';
+
+//React Bootstrap
 import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Custom CSS
 import "../style.css"
+
 const Converter = (props) => {
     var given = parseFloat(props.given);
     var b = parseInt(props.base);
-    
+
     const [string, setString] = useState('');
 
 
@@ -208,15 +215,15 @@ const Converter = (props) => {
     useEffect(() => {
         var whole = parseInt(given);
         var decimal = given - whole;
-        if (whole > 0 && decimal > 0.000){
+        if (whole > 0 && decimal > 0.000) {
             computeWholeNumber(whole);
             computeFraction(decimal);
         }
-        else if (whole > 0){
+        else if (whole > 0) {
             computeWholeNumber(whole);
             computeFraction(0);
         }
-        else{
+        else {
             computeFraction(decimal);
             computeWholeNumber(0);
         }
@@ -227,8 +234,6 @@ const Converter = (props) => {
     return (
 
         <>
-
-
             <Row>
                 <Col>
                     <Table responsive striped bordered id="whole" className="content-table">

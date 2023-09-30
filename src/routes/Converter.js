@@ -1,17 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react'
+
+//Custom Components
 import Navbar from "../components/Navbar";
-import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from "react-bootstrap/Button";
 import Calculator from "../components/Converter";
 import Info from "./WholeNumber/Info";
-import Card from "react-bootstrap/Card";
 import Footer from "../components/Footer.js";
-import Form from "react-bootstrap/Form";
-import "./style.css";
+import ScrollTop from '../components/ScrollTop';
+
+//React Bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// // import $ from 'jquery';
+import Form from "react-bootstrap/Form";
+import Image from 'react-bootstrap/Image';
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Image
+import arrow1 from '../image/arrow1.svg';
+
+//Custom CSS
+import "./style.css";
+
+//React Jquery
+import $ from 'jquery';
 
 const Converter = () => {
   const ref = useRef(null)
@@ -20,47 +33,88 @@ const Converter = () => {
   const [base, setBase] = useState(0);
 
   const [state, setState] = useState(true);
-  // const body = $('#container').height();
   useEffect(() => {
-
-
-
+    $('html, body').stop().animate({
+      scrollTop: 0
+    }, 100);
+  }, []);
+  useEffect(() => {
     const handleClick = event => {
 
       if (!state) {
         var numBase = document.getElementById("numBase").value;
         var num = document.getElementById("num").value;
         if (isNumeric(num) && isNumeric(numBase)) {
-          var b = parseInt(document.getElementById("numBase").value);
-          var given = parseFloat(document.getElementById("num").value);
-          if (b < 0 || given < 0) {
-            if (b < 0) {
-              document.getElementById('error2').innerHTML = 'Please enter a positive number.';
+          if (isFloat(numBase)) {
+            
+            if (isFloat(numBase)) {
+              document.getElementById('error2').innerHTML = 'Please enter a whole number.';
+              document.getElementById('error').innerHTML = '';
+
             }
             else {
               document.getElementById('error2').innerHTML = '';
-            }
-            if (given < 0) {
-              document.getElementById('error').innerHTML = 'Please enter a positive number.';
-            }
-            else {
               document.getElementById('error').innerHTML = '';
             }
           }
           else {
-            if (b === 0 || b === 1 || b === 2 || b === 8 || b === 16 || b === 10) {
-              document.getElementById('error2').innerHTML = 'Cannot choose 0, 1, 2, 8, 10, 16.';
-              document.getElementById('error').innerHTML = '';
-
+            var b = parseInt(document.getElementById("numBase").value);
+            var given = parseFloat(document.getElementById("num").value);
+            if (b < 0 || given < 0) {
+              if (b < 0) {
+                document.getElementById('error2').innerHTML = 'Please enter a positive number.';
+              }
+              else {
+                document.getElementById('error2').innerHTML = '';
+              }
+              if (given < 0) {
+                document.getElementById('error').innerHTML = 'Please enter a positive number.';
+              }
+              else {
+                document.getElementById('error').innerHTML = '';
+              }
             }
             else {
+              if (b === 0 || b === 1 || b === 2 || b === 8 || b === 16 || b === 10) {
+                document.getElementById('error2').innerHTML = 'Cannot choose 0, 1, 2, 8, 10, 16.';
+                document.getElementById('error').innerHTML = '';
 
-              setGiven(given);
-              setBase(b);
-              document.getElementById('error').innerHTML = '';
-              document.getElementById('error2').innerHTML = '';
+              }
+              else {
+
+                setGiven(given);
+                setBase(b);
+                document.getElementById('error').innerHTML = '';
+                document.getElementById('error2').innerHTML = '';
+                document.getElementById('error3').innerHTML = '';
+
+
+              }
             }
           }
+
+        }
+        else {
+          if (!isNumeric(num)) {
+            document.getElementById('error').innerHTML = 'Please enter a number.';
+            document.getElementById('error2').innerHTML = '';
+            document.getElementById('error3').innerHTML = '';
+          }
+          else {
+            document.getElementById('error').innerHTML = '';
+            document.getElementById('error2').innerHTML = '';
+            document.getElementById('error3').innerHTML = '';
+          }
+          if (!isNumeric(numBase)) {
+            document.getElementById('error2').innerHTML = 'Please enter a number.';
+          }
+          else {
+            document.getElementById('error2').innerHTML = '';
+            document.getElementById('error').innerHTML = '';
+            document.getElementById('error3').innerHTML = '';
+          }
+
+
         }
       }
       else {
@@ -157,8 +211,11 @@ const Converter = () => {
 
         <Navbar />
         <Container className="p-3 p-sm-3 px-md-4 py-md-6">
-          {/* Width: {size.width}/ Height: {size.height} */}
-          <div className="d-flex justify-content-center  align-items-center">
+          <div className="d-flex justify-content-center title align-items-center">
+            <div className="ins-1">
+              <Image src={arrow1}></Image>
+              <p className="lead fw-bold text-info">Choose base first!</p>
+            </div>
             <h1 className="text-center display-6 me-3">Convert to</h1>
             <Form.Group>
               <Form.Select className="fs-4 border border-dark" id="dropdown" onChange={check}>
@@ -183,12 +240,12 @@ const Converter = () => {
                   <Col>
                     <div className="mb-3">
                       <label className="form-label text-success"><h2>Enter number</h2></label>
-                      <input type="text" id="num" className="form-control border border-dark" ></input>
+                      <input type="text" id="num" className="form-control border border-dark" placeholder='e.g. 1.25, 100, 0.30'></input>
                       <small className="text-danger" id="error"></small>
                     </div>
                     <div className="my-3" id="baseInput">
                       <label className="form-label text-success"><h2>Enter Base</h2></label>
-                      <input type="text" id="numBase" className="form-control border border-dark" disabled={state}></input>
+                      <input type="text" id="numBase" className="form-control border border-dark" disabled={state} placeholder={!state ? 'e.g. 4' : 'Disabled'}></input>
                       <small className="text-danger" id="error2"></small>
                     </div>
                     <Button className="mb-3 w-100 btn-outline-primary" ref={ref}>Convert</Button>
@@ -200,11 +257,12 @@ const Converter = () => {
               </div>
             </Card.Body>
           </Card>
-          <Info base={parseInt(base)} />
+          {/* <Info base={parseInt(base)} /> */}
         </Container>
 
       </div >
       <Footer />
+      <ScrollTop />
     </>
   )
 }

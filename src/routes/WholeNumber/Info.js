@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import "bootstrap/dist/css/bootstrap.min.css"
+
+
+//React Bootstrap
 import Accordion from "react-bootstrap/Accordion"
+import "bootstrap/dist/css/bootstrap.min.css"
+
+//React Jquery
 import $ from "jquery"
 
 
@@ -28,7 +33,7 @@ const Info = ({ base }) => {
 
         if (b === 2) {
            
-            setState({ head1: 'What is a Binary Number?', body1: 'Binary numbers are a way of counting using only two digits, 0 and 1. This is much simpler than the decimal system, which uses 10 digits. Binary numbers are important in computers because they can be used to represent data and perform operations very quickly.The binary system uses only two digits making it a base-2 system.', head2: 'How to convert Decimal to Binary?', body2: {target: 'binary numbers', targetBase: '2, because we want to convert it to binary.', quotient: '12', remainder: '0', answer:'1 1 0 0 1' }, base: '2', given: '25' })
+            setState({ head1: 'What is a Binary Number?', body1: 'Binary numbers are a way of counting using only two digits, 0 and 1. This is much simpler than the decimal system, which uses 10 digits. Binary numbers are important in computers because they can be used to represent data and perform operations very quickly.The binary system uses only two digits making it a base-2 system.', head2: 'How to convert Decimal to Binary?', body2: {target: 'binary numbers', targetBase: '2, because we want to convert it to binary.', quotient: '12', remainder: '1', answer:'1 1 0 0 1' }, base: '2', given: '25' })
             $('#steps > #info').remove();
             $('#steps').append('<div id="info"><p>Example: </p><p>12 ÷ 2 = <span class="text-primary fw-bold">6</span><span class="text-danger fw-bold"> R 0</span></p><p>6 ÷ 2 = <span class="text-primary fw-bold">3</span><span class="text-danger fw-bold"> R 0</span></p><p>3 ÷ 2 = <span class="text-primary fw-bold">1</span><span class="text-danger fw-bold"> R 1</span></p><p>1 ÷ 2 = <span class="text-primary fw-bold">0</span><span class="text-danger fw-bold"> R 1</span></p></div>');
 
@@ -49,9 +54,7 @@ const Info = ({ base }) => {
             $('#steps').append('<div id="info"><p>Example: </p><p>2500 ÷ 18 = <span class="text-primary fw-bold">138</span><span class="text-danger fw-bold"> R 16</span></p><p>138 ÷ 18 = <span class="text-primary fw-bold">7</span><span class="text-danger fw-bold"> R 12</span></p><p>7 ÷ 18 = <span class="text-primary fw-bold">0</span><span class="text-danger fw-bold"> R 7</span></p></div>');
         }
     }, [b]);
-    // if (b === 2) {
-    //     $('#steps').append('<p>Example: </p><p>12 ÷ 2 = <span className="text-primary fw-bold">6</span><span className="text-danger fw-bold"> R 0</span></p><p>6 ÷ 2 = <span className="text-primary fw-bold">3</span><span className="text-danger fw-bold"> R 0</span></p><p>3 ÷ 2 = <span className="text-primary fw-bold">1</span><span className="text-danger fw-bold"> R 1</span></p><p>1 ÷ 2 = <span className="text-primary fw-bold">0</span><span className="text-danger fw-bold"> R 1</span></p>')
-    // }
+  
     return (
         <>
             <Accordion className="border border-dark">

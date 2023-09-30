@@ -1,16 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react'
+
+//Custom Components
 import Navbar from "../components/Navbar";
-import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from "react-bootstrap/Button";
 import FCalculator from "../components/FCalculator";
 import Info from "./Fraction/Info";
+import ScrollTop from '../components/ScrollTop';
+
+//React Bootstrap
+import Button from "react-bootstrap/Button";
+import Container from 'react-bootstrap/Container';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Footer from "../components/Footer.js";
 import Form from "react-bootstrap/Form";
+import Image from 'react-bootstrap/Image';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Image
+import arrow1 from '../image/arrow1.svg';
+
+//Custom CSS
 import "./style.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
+//React Jquery
 import $ from 'jquery';
 
 const Fraction = () => {
@@ -20,7 +33,6 @@ const Fraction = () => {
     const [base, setBase] = useState(0);
 
     const [state, setState] = useState(true);
-    // const body = $('#container').height();
     useEffect(() => {
         $('html, body').stop().animate({
             scrollTop: 0
@@ -30,7 +42,7 @@ const Fraction = () => {
 
 
 
-        const handleClick = event => {
+        const handleClick = () => {
 
             if (!state) {
                 var numBase = document.getElementById("numBase").value;
@@ -180,6 +192,7 @@ const Fraction = () => {
         return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
             !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
     }
+
     function isFloat(str) {
         let pattern = /^-?\d*(\.\d+)?$/;
         if (!str.match(pattern)) return false;
@@ -187,6 +200,7 @@ const Fraction = () => {
         const isInteger = Number.isInteger(val);
         return isInteger ? false : true;
     }
+
     const check = event => {
         console.log(event.target.value);
         if (event.target.value == -1) {
@@ -221,8 +235,11 @@ const Fraction = () => {
 
                 <Navbar />
                 <Container className="p-3 p-sm-3 px-md-4 py-md-6">
-                    {/* Width: {size.width}/ Height: {size.height} */}
-                    <div className="d-flex justify-content-center  align-items-center">
+                    <div className="d-flex justify-content-center title align-items-center">
+                        <div className="ins-1">
+                            <Image src={arrow1}></Image>
+                            <p className="lead fw-bold text-info">Choose base first!</p>
+                        </div>
                         <h1 className="text-center display-6 me-3">Fraction to</h1>
                         <Form.Group>
                             <Form.Select className="fs-4 border border-dark" id="dropdown" onChange={check}>
@@ -235,12 +252,7 @@ const Fraction = () => {
                             </Form.Select>
                             <small className="text-danger" id="error3"></small></Form.Group>
                     </div>
-
-
-
-
                     <Card className="my-3 p-4 border border-dark" >
-
                         <Card.Body className="p-4">
                             <div id="input" className="p-1">
                                 <div id="input" className="p-1">
@@ -248,12 +260,12 @@ const Fraction = () => {
                                         <Col>
                                             <div className="mb-3">
                                                 <label className="form-label text-success"><h2>Enter decimal number</h2></label>
-                                                <input type="text" id="num" className="form-control border border-dark" ></input>
+                                                <input type="text" id="num" className="form-control border border-dark" placeholder='e.g. 0.25'></input>
                                                 <small className="text-danger" id="error"></small>
                                             </div>
                                             <div className="my-3" id="baseInput">
                                                 <label className="form-label text-success"><h2>Enter Base</h2></label>
-                                                <input type="text" id="numBase" className="form-control border border-dark" disabled={state}></input>
+                                                <input type="text" id="numBase" className="form-control border border-dark" disabled={state} placeholder={!state ? 'e.g. 4' : 'Disabled'}></input>
                                                 <small className="text-danger" id="error2"></small>
                                             </div>
                                             <Button className="mb-3 w-100 btn-outline-primary" ref={ref}>Convert</Button>
@@ -262,22 +274,18 @@ const Fraction = () => {
                                             <FCalculator given={given} base={base} />
                                         </Col>
                                     </Row>
-                                    {/* {given > 0 && <Calculator given={given} base={2}/>} */}
-
                                 </div>
-
-                                {/* {given > 0 && <Calculator given={given} base={2}/>} */}
-
                             </div>
                         </Card.Body>
                     </Card>
-                    <div class="">
-                        <Info base={parseInt(base)} />
-                    </div>
+
+                    <Info base={parseInt(base)} />
+
                 </Container>
 
             </div >
             <Footer />
+            <ScrollTop/>
         </>
     )
 }

@@ -1,7 +1,13 @@
-import React from 'react'
-import { useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react'
+
+//React Jquery
 import $ from 'jquery';
+
+//React Bootstrap
 import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Custom CSS
 import "../style.css"
 const Calculator = (props) => {
     var given = parseInt(props.given);
@@ -104,11 +110,8 @@ const Calculator = (props) => {
     return (
 
         <>
-
-
-
             <Table responsive id="myTable" className="content-table border border-dark">
-                <thead >
+                <thead className="bg-primary">
                     <tr>
                     <th>Number</th>
                     <th>Base</th>

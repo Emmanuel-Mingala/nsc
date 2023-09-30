@@ -1,17 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react'
+
+//Custom Components
 import Navbar from "../components/Navbar";
-import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from "react-bootstrap/Button";
 import Calculator from "../components/Calculator";
 import Info from "./WholeNumber/Info";
-import Card from "react-bootstrap/Card";
 import Footer from "../components/Footer.js";
+import ScrollTop from '../components/ScrollTop';
+
+//React Bootstrap
+import Button from "react-bootstrap/Button";
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 import Form from "react-bootstrap/Form";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//React Jquery
 import $ from 'jquery';
+
+//Image
+import arrow1 from '../image/arrow1.svg'
 
 const WholeNumber = () => {
   const ref = useRef(null)
@@ -20,14 +30,14 @@ const WholeNumber = () => {
   const [base, setBase] = useState(0);
 
   const [state, setState] = useState(true);
-  useEffect(()=>{
+  useEffect(() => {
     $('html, body').stop().animate({
       scrollTop: 0
     }, 100);
-  },[]);
+  }, []);
   useEffect(() => {
-    const handleClick = event => {
-      
+    const handleClick = () => {
+
       if (!state) {
         var numBase = document.getElementById("numBase").value;
         var num = document.getElementById("num").value;
@@ -127,14 +137,11 @@ const WholeNumber = () => {
 
               }
             }
-
-
           }
           else {
             document.getElementById('error').innerHTML = 'Error please enter a number.';
             document.getElementById('error3').innerHTML = '';
             document.getElementById('error2').innerHTML = '';
-
           }
         }
 
@@ -158,6 +165,7 @@ const WholeNumber = () => {
     return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
       !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
   }
+
   function isFloat(str) {
     let pattern = /^-?\d*(\.\d+)?$/;
     if (!str.match(pattern)) return false;
@@ -165,6 +173,7 @@ const WholeNumber = () => {
     const isInteger = Number.isInteger(val);
     return isInteger ? false : true;
   }
+
   const check = event => {
     console.log(event.target.value);
     if (event.target.value == -1) {
@@ -194,8 +203,11 @@ const WholeNumber = () => {
 
         <Navbar />
         <Container className="p-3 p-sm-3 px-md-4 py-md-6">
-          {/* Width: {size.width}/ Height: {size.height} */}
-          <div className="d-flex justify-content-center  align-items-center">
+          <div className="d-flex justify-content-center title  align-items-center">
+            <div className="ins-1">
+              <Image src={arrow1}></Image>
+              <p className="lead fw-bold text-info">Choose base first!</p>
+            </div>
             <h1 className="text-center display-6 me-3">Decimal to</h1>
             <Form.Group>
               <Form.Select className="fs-4 border border-dark" id="dropdown" onChange={check}>
@@ -221,12 +233,12 @@ const WholeNumber = () => {
                     <Col>
                       <div className="mb-3">
                         <label className="form-label text-success"><h2>Enter whole number</h2></label>
-                        <input type="text" id="num" className="form-control border border-dark" ></input>
+                        <input type="text" id="num" className="form-control border border-dark" placeholder='e.g. 25'></input>
                         <small className="text-danger" id="error"></small>
                       </div>
                       <div className="my-3" id="baseInput">
                         <label className="form-label text-success"><h2>Enter Base</h2></label>
-                        <input type="text" id="numBase" className="form-control border border-dark" disabled={state}></input>
+                        <input type="text" id="numBase" className="form-control border border-dark" disabled={state} placeholder={!state ? 'e.g. 4' : 'Disabled'}></input>
                         <small className="text-danger" id="error2"></small>
                       </div>
                       <Button className="mb-3 w-100 btn-outline-primary" ref={ref}>Convert</Button>
@@ -235,12 +247,7 @@ const WholeNumber = () => {
                       <Calculator given={given} base={base} />
                     </Col>
                   </Row>
-                  {/* {given > 0 && <Calculator given={given} base={2}/>} */}
-
                 </div>
-
-                {/* {given > 0 && <Calculator given={given} base={2}/>} */}
-
               </div>
             </div>
           </div>
@@ -249,6 +256,7 @@ const WholeNumber = () => {
 
       </div >
       <Footer />
+      <ScrollTop/>
     </>
   )
 }

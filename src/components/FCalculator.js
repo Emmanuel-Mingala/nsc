@@ -1,45 +1,51 @@
-import React from 'react'
-import { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react'
+
+//React Jquery
 import $ from 'jquery';
+
+//React Bootstrap
 import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Custom CSS
 import "../style.css"
 const FCalculator = (props) => {
     var given = parseFloat(props.given);
     var b = parseInt(props.base);
-    
+
     const [string, setString] = useState('');
     useEffect(() => {
 
         $('#myTable > tbody > tr').remove();
-            var x = given;
-            var pro = 0;
-            var base = b;
-            var whole = 0;
-            var decimal = 0;
-            var initial = x;
-            const arr = [];
-            var ctr = 0;
-            while(ctr < 6){
-                pro = x * base;
-                whole = parseInt(pro);
-                decimal = pro - whole;
+        var x = given;
+        var pro = 0;
+        var base = b;
+        var whole = 0;
+        var decimal = 0;
+        var initial = x;
+        const arr = [];
+        var ctr = 0;
+        while (ctr < 6) {
+            pro = x * base;
+            whole = parseInt(pro);
+            decimal = pro - whole;
 
-                arr[ctr] = whole;
-                ctr += 1;
+            arr[ctr] = whole;
+            ctr += 1;
 
-                $('#myTable > tbody:last-child').append('<tr><td>'+ x.toPrecision(6) +'</td><td>' + base + '</td><td>' + pro.toPrecision(6) + '</td><td>' + parseInt(whole) + '</td></tr>');
-                x = decimal;
-                if (decimal == 0){
-                    break;
-                }
+            $('#myTable > tbody:last-child').append('<tr><td>' + x.toPrecision(6) + '</td><td>' + base + '</td><td>' + pro.toPrecision(6) + '</td><td>' + parseInt(whole) + '</td></tr>');
+            x = decimal;
+            if (decimal == 0) {
+                break;
             }
+        }
 
         $('#given').html("Given: " + initial);
-        
+
         if (base === 2) {
             setString("Binary: ");
             $('#result').html("<b class='fs-1'>.</b> ");
-            for (var i = 0; i < ctr; i++){
+            for (var i = 0; i < ctr; i++) {
                 $('#result').append(arr[i]);
             }
         }
@@ -47,7 +53,7 @@ const FCalculator = (props) => {
             setString("Octal: ");
             $('#result').html("<b class='fs-1'>.</b> ");
 
-            for (var i = 0; i < ctr; i++){
+            for (var i = 0; i < ctr; i++) {
                 $('#result').append(arr[i]);
             }
         }
@@ -110,16 +116,13 @@ const FCalculator = (props) => {
     return (
 
         <>
-
-
-
             <Table responsive striped bordered id="myTable" className="content-table">
                 <thead>
                     <tr>
-                    <th>Number</th>
-                    <th>Base</th>
-                    <th>Product</th>
-                    <th>Integer</th>
+                        <th>Number</th>
+                        <th>Base</th>
+                        <th>Product</th>
+                        <th>Integer</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
