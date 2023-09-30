@@ -10,7 +10,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import LinkContainer from 'react-router-bootstrap/LinkContainer'
 
 const NavbarComponent = () => {
@@ -18,7 +17,7 @@ const NavbarComponent = () => {
    
     return (
         <>
-            <Navbar expand="lg" style={{backgroundColor: "#009879"}}  className="navbar-dark py-2">
+            <Navbar expand="lg"   className="bg-primary navbar-light py-2">
                 <Container>
                     <LinkContainer to="/">
                     <Navbar.Brand><Image src={logo} height="50px"></Image></Navbar.Brand>

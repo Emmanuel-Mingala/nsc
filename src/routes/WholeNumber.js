@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// // import $ from 'jquery';
+import $ from 'jquery';
 
 const WholeNumber = () => {
   const ref = useRef(null)
@@ -20,29 +20,30 @@ const WholeNumber = () => {
   const [base, setBase] = useState(0);
 
   const [state, setState] = useState(true);
-  // const body = $('#container').height();
+  useEffect(()=>{
+    $('html, body').stop().animate({
+      scrollTop: 0
+    }, 100);
+  },[]);
   useEffect(() => {
-
-
-
     const handleClick = event => {
-
+      
       if (!state) {
         var numBase = document.getElementById("numBase").value;
         var num = document.getElementById("num").value;
         if (isNumeric(num) && isNumeric(numBase)) {
           if (isFloat(num) || isFloat(numBase)) {
-            if (isFloat(num)){
+            if (isFloat(num)) {
               document.getElementById('error').innerHTML = 'Please enter a whole number.';
             }
-            else{
+            else {
               document.getElementById('error').innerHTML = '';
 
             }
-            if (isFloat(numBase)){
+            if (isFloat(numBase)) {
               document.getElementById('error2').innerHTML = 'Please enter a whole number.';
             }
-            else{
+            else {
               document.getElementById('error2').innerHTML = '';
 
             }
@@ -51,16 +52,16 @@ const WholeNumber = () => {
             var b = parseInt(document.getElementById("numBase").value);
             var given = parseInt(document.getElementById("num").value);
             if (b < 0 || given < 0) {
-              if (b<0){
+              if (b < 0) {
                 document.getElementById('error2').innerHTML = 'Please enter a positive number.';
               }
-              else{
+              else {
                 document.getElementById('error2').innerHTML = '';
               }
-              if (given<0){
+              if (given < 0) {
                 document.getElementById('error').innerHTML = 'Please enter a positive number.';
               }
-              else{
+              else {
                 document.getElementById('error').innerHTML = '';
               }
             }
@@ -81,16 +82,16 @@ const WholeNumber = () => {
           }
         }
         else {
-          if (!isNumeric(num)){
+          if (!isNumeric(num)) {
             document.getElementById('error').innerHTML = 'Please enter a number.';
           }
-          else{
+          else {
             document.getElementById('error').innerHTML = '';
           }
-          if (!isNumeric(numBase)){
+          if (!isNumeric(numBase)) {
             document.getElementById('error2').innerHTML = 'Please enter a number.';
           }
-          else{
+          else {
             document.getElementById('error2').innerHTML = '';
           }
 
@@ -243,7 +244,7 @@ const WholeNumber = () => {
               </div>
             </div>
           </div>
-          <Info base={parseInt(base)}  />
+          <Info base={parseInt(base)} />
         </Container>
 
       </div >

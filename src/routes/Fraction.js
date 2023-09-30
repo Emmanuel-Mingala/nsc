@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// // import $ from 'jquery';
+import $ from 'jquery';
 
 const Fraction = () => {
     const ref = useRef(null)
@@ -21,6 +21,11 @@ const Fraction = () => {
 
     const [state, setState] = useState(true);
     // const body = $('#container').height();
+    useEffect(() => {
+        $('html, body').stop().animate({
+            scrollTop: 0
+        }, 100);
+    }, []);
     useEffect(() => {
 
 
@@ -43,7 +48,7 @@ const Fraction = () => {
                             var b = parseInt(document.getElementById("numBase").value);
                             var given = parseFloat(document.getElementById("num").value);
                             var integer = parseInt(given);
-                            if (integer === 0){
+                            if (integer === 0) {
                                 if (b < 0 || given < 0) {
                                     if (b < 0) {
                                         document.getElementById('error2').innerHTML = 'Please enter a positive number.';
@@ -62,10 +67,10 @@ const Fraction = () => {
                                     if (b === 0 || b === 1 || b === 2 || b === 8 || b === 16 || b === 10) {
                                         document.getElementById('error2').innerHTML = 'Cannot choose 0, 1, 2, 8, 10, 16.';
                                         document.getElementById('error').innerHTML = '';
-    
+
                                     }
                                     else {
-    
+
                                         setGiven(given);
                                         setBase(b);
                                         document.getElementById('error').innerHTML = '';
@@ -73,11 +78,11 @@ const Fraction = () => {
                                     }
                                 }
                             }
-                            else{
+                            else {
                                 document.getElementById('error').innerHTML = 'Please enter decimal numbers only.';
                             }
-                            }
-                            
+                        }
+
 
 
                     }
@@ -111,33 +116,33 @@ const Fraction = () => {
 
                 }
                 else {
-                    var integer =0;
-                    
+                    var integer = 0;
+
                     num = document.getElementById("num").value;
                     if (isNumeric(num)) {
 
                         if (isFloat(num)) {
-                            
+
                             given = parseFloat(document.getElementById("num").value);
                             integer = parseInt(given);
-                            if (integer === 0){
+                            if (integer === 0) {
                                 if (given < 0) {
                                     document.getElementById('error').innerHTML = 'Please enter a positive number.';
                                 }
                                 else {
-                                    
+
                                     setGiven(given);
                                     document.getElementById('error').innerHTML = '';
                                     document.getElementById('error3').innerHTML = '';
                                     document.getElementById('error2').innerHTML = '';
-    
-    
+
+
                                 }
                             }
-                            else{
-                                document.getElementById("error").innerHTML="Please enter decimal numbers only."
+                            else {
+                                document.getElementById("error").innerHTML = "Please enter decimal numbers only."
                             }
-                            
+
 
                         }
                         else {
@@ -189,7 +194,7 @@ const Fraction = () => {
             setState(false);
             setBase(0);
             setGiven(0);
-            document.getElementById("error3").innerHTML="";
+            document.getElementById("error3").innerHTML = "";
 
         }
         else if (event.target.value == 0) {
@@ -204,9 +209,9 @@ const Fraction = () => {
             document.getElementById("numBase").value = "";
             setState(true);
             setBase(event.target.value);
-            document.getElementById("error3").innerHTML="";
-            document.getElementById("error").innerHTML="";
-            document.getElementById("error2").innerHTML="";
+            document.getElementById("error3").innerHTML = "";
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("error2").innerHTML = "";
         }
 
     }
@@ -267,7 +272,7 @@ const Fraction = () => {
                         </Card.Body>
                     </Card>
                     <div class="">
-                    <Info base={parseInt(base)} />
+                        <Info base={parseInt(base)} />
                     </div>
                 </Container>
 
